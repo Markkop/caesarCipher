@@ -66,6 +66,7 @@ async function getData(url) {
  * Sends a form data to the given endpoint
  * @param { String } url
  * @param { SecretMessage } postData
+ * @returns { Object } response data
  */
 async function postForm(url, postData) {
   try {
