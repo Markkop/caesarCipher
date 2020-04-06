@@ -1,26 +1,32 @@
-# caesarCipher script
+# :unlock: caesarCipher script
 
-This package receives a secret message from an api and returns ir deciphered using Caesar's Cipher algorithm.
+This script gets a secret message from a given endpoint, deciphers it and returns it back as a Form Data content.
+
+## Dependencies
+
+- [NodeJS and NPM](https://nodejs.org/en/)
+- Git
 
 ## How to use
 
-Check if [NodeJS](https://nodejs.org/en/) and npm are installed\
-`node --version`\
-`npm --version` _(npm comes by default when installing NodeJS)_
+Duplicate `.env.example` file and rename it to `.env`.
+Then provide your token and the GET and POST urls you wish to use
 
-Clone this repository\
-`git clone https://github.com/Markkop/caesarCipher.git`\
-`cd caesarCipher`
+```bash
+# Check if NodeJS and NPM are installed
+node --version
+npm --version
 
-Install dependencies\
-`npm install`
+# Clone this repository
+git clone https://github.com/Markkop/caesarCipher.git
+cd caesarCipher
 
-Add your token inside `main.js`\
-`const YOUR_TOKEN = " "`
+# Install dependencies
+npm install
 
-Run script\
-`npm start` or `node main.js`
+# Run script
+npm start
 
-## Images
-
-![main function printscreen](http://i.imgur.com/48DSMmY.png)
+# Run tests
+npm test
+```
