@@ -1,6 +1,6 @@
 {
   "name": "caesarcipher",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A script that deciphers a message from an api",
   "main": "script.js",
   "scripts": {

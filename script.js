@@ -21,27 +21,25 @@ const postUrl = `${process.env.POST_URL}?${tokenParm}`
  * Executes this script
  */
 async function main() {
-  try {
-    const secretData = await getData(getUrl)
-    const secretMessage = secretData['cifrado']
-    const secretNumber = secretData['numero_casas']
-    const revealedMessage = decipher(secretMessage, secretNumber)
-
-    const postJson = {
-      numero_casas: secretData['numero_casas'],
-      token: secretData['token'],
-      cifrado: secretData['cifrado'],
-      decifrado: revealedMessage,
-      resumo_criptografico: sha1(revealedMessage),
-    }
-
-    await postForm(postUrl, postJson)
-  } catch (err) {
-    console.log('Error: ', err.toString())
-    if (/cifrado/.test(err.message)) {
-      console.log('Did you insert your token?')
-    }
+  if (!process.env.YOUR_TOKEN) {
+    console.log('Token not found on .env file')
+    return
   }
+
+  const secretData = await getData(getUrl)
+  const secretMessage = secretData['cifrado']
+  const secretNumber = secretData['numero_casas']
+  const revealedMessage = decipher(secretMessage, secretNumber)
+
+  const postJson = {
+    numero_casas: secretData['numero_casas'],
+    token: secretData['token'],
+    cifrado: secretData['cifrado'],
+    decifrado: revealedMessage,
+    resumo_criptografico: sha1(revealedMessage),
+  }
+
+  await postForm(postUrl, postJson)
 }
 
 /**
@@ -66,6 +64,7 @@ async function getData(url) {
  * Sends a form data to the given endpoint
  * @param { String } url
  * @param { SecretMessage } postData
+ * @returns { Object } response data
  */
 async function postForm(url, postData) {
   try {

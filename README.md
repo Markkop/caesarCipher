@@ -9,7 +9,7 @@ This script gets a secret message from a given endpoint, deciphers it and return
 
 ## How to use
 
-Duplicate `.env.example` file and rename it to `.env`.
+Duplicate `.env.example` file and rename it to `.env`.\
 Then provide your token and the GET and POST urls you wish to use
 
 ```bash
